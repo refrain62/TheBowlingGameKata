@@ -20,11 +20,14 @@ public class Game
 	public int score()
 	{
 		int score = 0;
+		int i = 0;
 		
 		// ‘Sƒ[ƒ‹‚Ìƒsƒ“”‚ğ‘«‚µ‚ ‚°‚é
-		for( int i = 0; i < rolls.length; i++ )
+		for( int frame = 0; frame < 10; frame++ )
 		{
-			score += rolls[ i ];
+			score += rolls[ i ] + rolls[ i + 1 ];
+			
+			i += 2;
 		}
 		
 		return score;
