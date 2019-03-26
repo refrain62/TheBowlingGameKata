@@ -26,7 +26,7 @@ public class BowlingGameKataTest extends TestCase
 	public void testGutterGame() throws Exception
 	{
 		// 全てのゲームのロールでスコア0を設定
-		rollMany( 20, 0 );
+		this.rollMany( 20, 0 );
 		
 		// スコアが0であることを確認
 		assertEquals( 0, g.score() );
@@ -36,9 +36,25 @@ public class BowlingGameKataTest extends TestCase
 	public void testAllOnes() throws Exception
 	{
 		// 全てのゲームのロールでスコア1を設定
-		rollMany( 20, 1 );
+		this.rollMany( 20, 1 );
 		
 		// スコアが 20になることを確認
 		assertEquals( 20, g.score() );
+	}
+	
+	// 1回スペアになった場合のテスト
+	// ※スペアは「次の１投分を加算することができる」
+	public void testOneSpare() throws Exception
+	{
+		g.roll( 5 );
+		g.roll( 5 );	// spare!
+		
+		g.roll( 3 );
+
+		// 残りのロール（全20回 - 上記3回 = 17回）はすべてスコアが0だったと想定
+		this.rollMany( 17, 0 );
+
+		// スコアが 16(5 + 5 + 3 + 3)になることを確認
+		assertEquals( 16, g.score() );
 	}
 }
