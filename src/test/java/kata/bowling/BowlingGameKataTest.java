@@ -5,12 +5,12 @@ import junit.framework.TestCase;
 public class BowlingGameKataTest extends TestCase
 {
 	// ゲーム管理
-	private Game g;
+	private Game game;
 	
 	// ゲームのインスタンスの生成
 	protected void setUp() throws Exception
 	{
-		this.g = new Game();
+		this.game = new Game();
 	}
 
 	// 指定されたピン数で指定ロール数のスコアを設定
@@ -18,7 +18,7 @@ public class BowlingGameKataTest extends TestCase
 	{
 		for( int i = 0; i < n; i++ )
 		{
-			g.roll( pins );
+			game.roll( pins );
 		}
 	}
 	
@@ -29,7 +29,7 @@ public class BowlingGameKataTest extends TestCase
 		this.rollMany( 20, 0 );
 		
 		// スコアが0であることを確認
-		assertEquals( 0, g.score() );
+		assertEquals( 0, game.score() );
 	}
 	
 	// すべてのゲームロールで１だった場合のテスト
@@ -39,7 +39,7 @@ public class BowlingGameKataTest extends TestCase
 		this.rollMany( 20, 1 );
 		
 		// スコアが 20になることを確認
-		assertEquals( 20, g.score() );
+		assertEquals( 20, game.score() );
 	}
 	
 	// 1回スペアになった場合のテスト
@@ -49,13 +49,13 @@ public class BowlingGameKataTest extends TestCase
 		// スペアを取った場合
 		this.rollSparea();
 		
-		g.roll( 3 );
+		game.roll( 3 );
 
 		// 残りのロール（全20回 - 上記3回 = 17回）はすべてスコアが0だったと想定
 		this.rollMany( 17, 0 );
 
 		// スコアが 16(5 + 5 + 3 + 3)になることを確認
-		assertEquals( 16, g.score() );
+		assertEquals( 16, game.score() );
 	}
 
 	// 1回ストライクになった場合のテスト
@@ -65,14 +65,14 @@ public class BowlingGameKataTest extends TestCase
 		// ストライクを取った場合
 		this.rollStrike();
 		
-		g.roll( 3 );
-		g.roll( 4 );
+		game.roll( 3 );
+		game.roll( 4 );
 
 		// 残りのロール（全20回 - 上記4回（ストライクは2ロール分） = 16回）はすべてスコアが0だったと想定
 		this.rollMany( 16, 0 );
 
 		// スコアが 24(10 + (3 + 4) + (3 + 4))になることを確認
-		assertEquals( 24, g.score() );
+		assertEquals( 24, game.score() );
 	}
 	
 	// パーフェクトゲームの場合のテスト
@@ -82,19 +82,19 @@ public class BowlingGameKataTest extends TestCase
 		this.rollMany( 12, 10 );
 
 		// スコアが 300になることを確認
-		assertEquals( 300, g.score() );
+		assertEquals( 300, game.score() );
 	}
 	
 	// ストライクを取った場合
 	private void rollStrike()
 	{
-		g.roll( 10 );
+		game.roll( 10 );
 	}
 	
 	// スペアを取った場合
 	private void rollSparea()
 	{
-		g.roll( 5 );
-		g.roll( 5 );
+		game.roll( 5 );
+		game.roll( 5 );
 	}
 }
