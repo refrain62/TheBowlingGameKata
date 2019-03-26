@@ -25,8 +25,8 @@ public class Game
 		// 全ロールのピン数を足しあげる
 		for( int frame = 0; frame < 10; frame++ )
 		{
-			// フレーム内の合計が10になる場合（スペアになる場合）
-			if(		this.rolls[ frameIndex ] + this.rolls[ frameIndex + 1 ] == 10
+			// フレーム内がスペアになる場合
+			if(		isSpare( frameIndex ) == true
 				)
 			{
 				score += 10 + this.rolls[ frameIndex + 2 ];
@@ -36,13 +36,19 @@ public class Game
 			// それ以外はフレーム内の合計を足しあげる
 			else
 			{
-				score += rolls[ frameIndex ] + rolls[ frameIndex + 1 ];
+				score += this.rolls[ frameIndex ] + this.rolls[ frameIndex + 1 ];
 				
 				frameIndex += 2;
 			}
 		}
 		
 		return score;
+	}
+	
+	// スペアかどうか判断
+	private boolean isSpare( int frameIndex )
+	{
+		return this.rolls[ frameIndex ] + this.rolls[ frameIndex + 1 ] == 10;
 	}
 
 }
