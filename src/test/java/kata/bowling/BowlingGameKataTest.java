@@ -18,4 +18,18 @@ public class BowlingGameKataTest extends TestCase
 		// スコアが0であることを確認
 		assertEquals( 0, g.score() );
 	}
+	
+	public void testAllOnes() throws Exception
+	{
+		Game g = new Game();
+		
+		// 全てのゲームのロールでスコア1を設定
+		for( int i = 0; i < 20; i++ )
+		{
+			g.roll( 1 );
+		}
+		
+		// スコアが 20になることを確認
+		assertEquals( 20, g.score() );
+	}
 }
