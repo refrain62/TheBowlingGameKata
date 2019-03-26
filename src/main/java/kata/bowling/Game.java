@@ -24,6 +24,14 @@ public class Game
 	// スコアの取得
 	public int score()
 	{
+		int score = 0;
+		
+		// 全ロールのピン数を足しあげる
+		for( int i = 0; i < rolls.length; i++ )
+		{
+			score += rolls[ i ];
+		}
+		
 		return score;
 	}
 
