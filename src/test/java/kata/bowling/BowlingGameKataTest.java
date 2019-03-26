@@ -4,11 +4,17 @@ import junit.framework.TestCase;
 
 public class BowlingGameKataTest extends TestCase
 {
+	// ゲーム管理
+	private Game g;
+	
+	protected void setUp() throws Exception
+	{
+		this.g = new Game();
+	}
+	
 	// ガーターゲームのテスト
 	public void testGutterGame() throws Exception
 	{
-		Game g = new Game();
-		
 		// 全てのゲームのロールでスコア0を設定
 		for( int i = 0; i < 20; i++ )
 		{
@@ -21,8 +27,6 @@ public class BowlingGameKataTest extends TestCase
 	
 	public void testAllOnes() throws Exception
 	{
-		Game g = new Game();
-		
 		// 全てのゲームのロールでスコア1を設定
 		for( int i = 0; i < 20; i++ )
 		{
