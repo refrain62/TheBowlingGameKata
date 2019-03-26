@@ -26,7 +26,7 @@ public class Game
 		for( int frame = 0; frame < 10; frame++ )
 		{
 			// 1フレームでストライクになった場合
-			if(		this.rolls[ frameIndex ] == 10
+			if(		this.isStrike( frameIndex ) == true
 				)
 			{
 				score += 10 + this.strikeBonus( frameIndex );
@@ -35,7 +35,7 @@ public class Game
 				frameIndex++;
 			}
 			// フレーム内がスペアになる場合
-			else if(	isSpare( frameIndex ) == true
+			else if(	this.isSpare( frameIndex ) == true
 					)
 			{
 				score += 10 + this.spareBonus( frameIndex );
@@ -76,6 +76,12 @@ public class Game
 	private boolean isSpare( int frameIndex )
 	{
 		return this.rolls[ frameIndex ] + this.rolls[ frameIndex + 1 ] == 10;
+	}
+	
+	// ストライクかどうか判断
+	private boolean isStrike( int frameIndex )
+	{
+		return this.rolls[ frameIndex ] == 10;
 	}
 
 }
