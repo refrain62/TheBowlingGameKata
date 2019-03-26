@@ -29,7 +29,7 @@ public class Game
 			if(		this.rolls[ frameIndex ] == 10
 				)
 			{
-				score += 10 + this.rolls[ frameIndex + 1 ] + this.rolls[ frameIndex + 2 ];
+				score += 10 + this.strikeBonus( frameIndex );
 						
 				// 次のフレームへ
 				frameIndex++;
@@ -38,20 +38,38 @@ public class Game
 			else if(	isSpare( frameIndex ) == true
 					)
 			{
-				score += 10 + this.rolls[ frameIndex + 2 ];
+				score += 10 + this.spareBonus( frameIndex );
 				
 				frameIndex += 2;
 			}
 			// それ以外はフレーム内の合計を足しあげる
 			else
 			{
-				score += this.rolls[ frameIndex ] + this.rolls[ frameIndex + 1 ];
+				score += this.sumOfBallsInFrame( frameIndex );
 				
 				frameIndex += 2;
 			}
 		}
 		
 		return score;
+	}
+	
+	// フレーム内のピン数の合計
+	private int sumOfBallsInFrame( int frameIndex )
+	{
+		return this.rolls[ frameIndex ] + this.rolls[ frameIndex + 1 ];
+	}
+
+	// スペアの場合のボーナス数
+	private int spareBonus( int frameIndex )
+	{
+		return this.rolls[ frameIndex + 2 ];
+	}
+
+	// ストライクの場合のボーナス数
+	private int strikeBonus( int frameIndex )
+	{
+		return this.rolls[ frameIndex + 1 ] + this.rolls[ frameIndex + 2 ];
 	}
 	
 	// スペアかどうか判断
