@@ -62,7 +62,8 @@ public class BowlingGameKataTest extends TestCase
 	// ※ストライクは１投目で10本全部倒した場合。ストライクを足したフレームの得点は、次の２投分を加算する[10＋○＋○]
 	public void testOneStrike() throws Exception
 	{
-		g.roll( 10 );		// strike!
+		// ストライクを取った場合
+		this.rollStrike();
 		
 		g.roll( 3 );
 		g.roll( 4 );
@@ -72,6 +73,12 @@ public class BowlingGameKataTest extends TestCase
 
 		// スコアが 24(10 + (3 + 4) + (3 + 4))になることを確認
 		assertEquals( 24, g.score() );
+	}
+	
+	// ストライクを取った場合
+	private void rollStrike()
+	{
+		g.roll( 10 );
 	}
 	
 	// スペアを取った場合
