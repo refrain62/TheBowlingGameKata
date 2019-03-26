@@ -13,7 +13,7 @@ public class Game
 	public void roll(int pins)
 	{
 		// 倒したピン数をロールに紐づけて保持
-		rolls[ currentRoll++ ] = pins;
+		this.rolls[ this.currentRoll++ ] = pins;
 	}
 
 	// スコアの取得
@@ -25,9 +25,21 @@ public class Game
 		// 全ロールのピン数を足しあげる
 		for( int frame = 0; frame < 10; frame++ )
 		{
-			score += rolls[ i ] + rolls[ i + 1 ];
-			
-			i += 2;
+			// フレーム内の合計が10になる場合（スペアになる場合）
+			if(		this.rolls[ i ] + this.rolls[ i + 1 ] == 10
+				)
+			{
+				score += 10 + this.rolls[ i + 2 ];
+				
+				i += 2;
+			}
+			// それ以外はフレーム内の合計を足しあげる
+			else
+			{
+				score += rolls[ i ] + rolls[ i + 1 ];
+				
+				i += 2;
+			}
 		}
 		
 		return score;
