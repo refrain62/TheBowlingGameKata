@@ -46,8 +46,8 @@ public class BowlingGameKataTest extends TestCase
 	// ※スペアは「次の１投分を加算することができる」
 	public void testOneSpare() throws Exception
 	{
-		g.roll( 5 );
-		g.roll( 5 );	// spare!
+		// スペアを取った場合
+		this.rollSparea();
 		
 		g.roll( 3 );
 
@@ -56,5 +56,12 @@ public class BowlingGameKataTest extends TestCase
 
 		// スコアが 16(5 + 5 + 3 + 3)になることを確認
 		assertEquals( 16, g.score() );
+	}
+
+	// スペアを取った場合
+	private void rollSparea()
+	{
+		g.roll( 5 );
+		g.roll( 5 );
 	}
 }
