@@ -42,19 +42,19 @@ public class BowlingGameKataTest extends TestCase
 		assertEquals( 20, g.score() );
 	}
 	
-	// 1回スペアになった場合のテスト
-	// ※スペアは「次の１投分を加算することができる」
-	public void testOneSpare() throws Exception
-	{
-		g.roll( 5 );
-		g.roll( 5 );	// spare!
-		
-		g.roll( 3 );
-
-		// 残りのロール（全20回 - 上記3回 = 17回）はすべてスコアが0だったと想定
-		this.rollMany( 17, 0 );
-
-		// スコアが 16(5 + 5 + 3 + 3)になることを確認
-		assertEquals( 16, g.score() );
-	}
+//	// 1回スペアになった場合のテスト
+//	// ※スペアは「次の１投分を加算することができる」
+//	public void testOneSpare() throws Exception
+//	{
+//		g.roll( 5 );
+//		g.roll( 5 );	// spare!
+//		
+//		g.roll( 3 );
+//
+//		// 残りのロール（全20回 - 上記3回 = 17回）はすべてスコアが0だったと想定
+//		this.rollMany( 17, 0 );
+//
+//		// スコアが 16(5 + 5 + 3 + 3)になることを確認
+//		assertEquals( 16, g.score() );
+//	}
 }
