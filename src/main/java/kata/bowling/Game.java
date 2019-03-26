@@ -25,9 +25,18 @@ public class Game
 		// 全ロールのピン数を足しあげる
 		for( int frame = 0; frame < 10; frame++ )
 		{
-			// フレーム内がスペアになる場合
-			if(		isSpare( frameIndex ) == true
+			// 1フレームでストライクになった場合
+			if(		this.rolls[ frameIndex ] == 10
 				)
+			{
+				score += 10 + this.rolls[ frameIndex + 1 ] + this.rolls[ frameIndex + 2 ];
+						
+				// 次のフレームへ
+				frameIndex++;
+			}
+			// フレーム内がスペアになる場合
+			else if(	isSpare( frameIndex ) == true
+					)
 			{
 				score += 10 + this.rolls[ frameIndex + 2 ];
 				
