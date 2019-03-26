@@ -12,7 +12,7 @@ public class Game
 	// ƒXƒRƒA‚Ìæ“¾
 	public int score()
 	{
-		return -1;
+		return 0;
 	}
 
 }
