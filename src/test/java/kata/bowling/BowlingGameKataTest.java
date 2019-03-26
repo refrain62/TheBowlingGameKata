@@ -31,13 +31,11 @@ public class BowlingGameKataTest extends TestCase
 		}
 	}
 	
+	// すべてのゲームロールで１だった場合のテスト
 	public void testAllOnes() throws Exception
 	{
 		// 全てのゲームのロールでスコア1を設定
-		for( int i = 0; i < 20; i++ )
-		{
-			g.roll( 1 );
-		}
+		rollMany( 20, 1 );
 		
 		// スコアが 20になることを確認
 		assertEquals( 20, g.score() );
