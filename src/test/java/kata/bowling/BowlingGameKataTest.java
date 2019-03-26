@@ -15,10 +15,13 @@ public class BowlingGameKataTest extends TestCase
 	// ガーターゲームのテスト
 	public void testGutterGame() throws Exception
 	{
+		int n = 20;
+		int pins = 0;
+		
 		// 全てのゲームのロールでスコア0を設定
-		for( int i = 0; i < 20; i++ )
+		for( int i = 0; i < n; i++ )
 		{
-			g.roll( 0 );
+			g.roll( pins );
 		}
 		
 		// スコアが0であることを確認
