@@ -20,25 +20,25 @@ public class Game
 	public int score()
 	{
 		int score = 0;
-		int i = 0;
+		int frameIndex = 0;
 		
 		// 全ロールのピン数を足しあげる
 		for( int frame = 0; frame < 10; frame++ )
 		{
 			// フレーム内の合計が10になる場合（スペアになる場合）
-			if(		this.rolls[ i ] + this.rolls[ i + 1 ] == 10
+			if(		this.rolls[ frameIndex ] + this.rolls[ frameIndex + 1 ] == 10
 				)
 			{
-				score += 10 + this.rolls[ i + 2 ];
+				score += 10 + this.rolls[ frameIndex + 2 ];
 				
-				i += 2;
+				frameIndex += 2;
 			}
 			// それ以外はフレーム内の合計を足しあげる
 			else
 			{
-				score += rolls[ i ] + rolls[ i + 1 ];
+				score += rolls[ frameIndex ] + rolls[ frameIndex + 1 ];
 				
-				i += 2;
+				frameIndex += 2;
 			}
 		}
 		
