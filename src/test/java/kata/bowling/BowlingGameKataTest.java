@@ -58,6 +58,22 @@ public class BowlingGameKataTest extends TestCase
 		assertEquals( 16, g.score() );
 	}
 
+	// 1回ストライクになった場合のテスト
+	// ※ストライクは１投目で10本全部倒した場合。ストライクを足したフレームの得点は、次の２投分を加算する[10＋○＋○]
+	public void testOneStrike() throws Exception
+	{
+		g.roll( 10 );		// strike!
+		
+		g.roll( 3 );
+		g.roll( 4 );
+
+		// 残りのロール（全20回 - 上記4回（ストライクは2ロール分） = 16回）はすべてスコアが0だったと想定
+		this.rollMany( 16, 0 );
+
+		// スコアが 24(10 + (3 + 4) + (3 + 4))になることを確認
+		assertEquals( 24, g.score() );
+	}
+	
 	// スペアを取った場合
 	private void rollSparea()
 	{
