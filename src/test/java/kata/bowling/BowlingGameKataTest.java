@@ -75,6 +75,16 @@ public class BowlingGameKataTest extends TestCase
 		assertEquals( 24, g.score() );
 	}
 	
+	// パーフェクトゲームの場合のテスト
+	public void testPerfectGmae() throws Exception
+	{
+		// 全てのゲームでストライク
+		this.rollMany( 12, 10 );
+
+		// スコアが 300になることを確認
+		assertEquals( 300, g.score() );
+	}
+	
 	// ストライクを取った場合
 	private void rollStrike()
 	{
