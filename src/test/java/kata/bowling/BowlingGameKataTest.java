@@ -78,7 +78,7 @@ public class BowlingGameKataTest extends TestCase
 	// パーフェクトゲームの場合のテスト
 	public void testPerfectGmae() throws Exception
 	{
-		// 全てのゲームでストライク
+		// 全てのゲームでストライク（10フレーム＋10フレーム２投目＋10フレーム3投目＝12回）
 		this.rollMany( 12, 10 );
 
 		// スコアが 300になることを確認
