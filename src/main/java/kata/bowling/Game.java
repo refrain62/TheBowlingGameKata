@@ -1,87 +1,87 @@
 package kata.bowling;
 
-// ƒ{[ƒŠƒ“ƒO‚ÌƒQ[ƒ€ŠÇ—
+// ãƒœãƒ¼ãƒªãƒ³ã‚°ã®ã‚²ãƒ¼ãƒ ç®¡ç†
 public class Game
 {
-	// ƒQ[ƒ€ƒ[ƒ‹•Û—pi2‰ñ ~ 10ƒQ[ƒ€ ‚¾‚ª10ƒQ[ƒ€–Ú‚ª3ƒ[ƒ‹‚È‚Ì‚Å + 1 = 21j
-	private int rolls[] = new int[21];
-	
-	// Œ»İ‚Ìƒ[ƒ‹•Û—p
-	private int currentRoll = 0;
-	
-	// ƒQ[ƒ€ƒ[ƒ‹
-	public void roll(int pins)
-	{
-		// “|‚µ‚½ƒsƒ“”‚ğƒ[ƒ‹‚É•R‚Ã‚¯‚Ä•Û
-		this.rolls[ this.currentRoll++ ] = pins;
-	}
+  // ã‚²ãƒ¼ãƒ ãƒ­ãƒ¼ãƒ«ä¿æŒç”¨ï¼ˆ2å› Ã— 10ã‚²ãƒ¼ãƒ  ã ãŒ10ã‚²ãƒ¼ãƒ ç›®ãŒ3ãƒ­ãƒ¼ãƒ«ãªã®ã§ + 1 = 21ï¼‰
+  private int rolls[] = new int[21];
+  
+  // ç¾åœ¨ã®ãƒ­ãƒ¼ãƒ«ä¿æŒç”¨
+  private int currentRoll = 0;
+  
+  // ã‚²ãƒ¼ãƒ ãƒ­ãƒ¼ãƒ«
+  public void roll(int pins)
+  {
+    // å€’ã—ãŸãƒ”ãƒ³æ•°ã‚’ãƒ­ãƒ¼ãƒ«ã«ç´ã¥ã‘ã¦ä¿æŒ
+    this.rolls[ this.currentRoll++ ] = pins;
+  }
 
-	// ƒXƒRƒA‚Ìæ“¾
-	public int score()
-	{
-		int score = 0;
-		int frameIndex = 0;
-		
-		// ‘Sƒ[ƒ‹‚Ìƒsƒ“”‚ğ‘«‚µ‚ ‚°‚é
-		for( int frame = 0; frame < 10; frame++ )
-		{
-			// 1ƒtƒŒ[ƒ€‚ÅƒXƒgƒ‰ƒCƒN‚É‚È‚Á‚½ê‡
-			if(		this.isStrike( frameIndex ) == true
-				)
-			{
-				score += 10 + this.strikeBonus( frameIndex );
-						
-				// Ÿ‚ÌƒtƒŒ[ƒ€‚Ö
-				frameIndex++;
-			}
-			// ƒtƒŒ[ƒ€“à‚ªƒXƒyƒA‚É‚È‚éê‡
-			else if(	this.isSpare( frameIndex ) == true
-					)
-			{
-				score += 10 + this.spareBonus( frameIndex );
-				
-				frameIndex += 2;
-			}
-			// ‚»‚êˆÈŠO‚ÍƒtƒŒ[ƒ€“à‚Ì‡Œv‚ğ‘«‚µ‚ ‚°‚é
-			else
-			{
-				score += this.sumOfBallsInFrame( frameIndex );
-				
-				frameIndex += 2;
-			}
-		}
-		
-		return score;
-	}
-	
-	// ƒtƒŒ[ƒ€“à‚Ìƒsƒ“”‚Ì‡Œv
-	private int sumOfBallsInFrame( int frameIndex )
-	{
-		return this.rolls[ frameIndex ] + this.rolls[ frameIndex + 1 ];
-	}
+  // ã‚¹ã‚³ã‚¢ã®å–å¾—
+  public int score()
+  {
+    int score = 0;
+    int frameIndex = 0;
+    
+    // å…¨ãƒ­ãƒ¼ãƒ«ã®ãƒ”ãƒ³æ•°ã‚’è¶³ã—ã‚ã’ã‚‹
+    for( int frame = 0; frame < 10; frame++ )
+    {
+      // 1ãƒ•ãƒ¬ãƒ¼ãƒ ã§ã‚¹ãƒˆãƒ©ã‚¤ã‚¯ã«ãªã£ãŸå ´åˆ
+      if(   this.isStrike( frameIndex ) == true
+        )
+      {
+        score += 10 + this.strikeBonus( frameIndex );
+            
+        // æ¬¡ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã¸
+        frameIndex++;
+      }
+      // ãƒ•ãƒ¬ãƒ¼ãƒ å†…ãŒã‚¹ãƒšã‚¢ã«ãªã‚‹å ´åˆ
+      else if(  this.isSpare( frameIndex ) == true
+          )
+      {
+        score += 10 + this.spareBonus( frameIndex );
+        
+        frameIndex += 2;
+      }
+      // ãã‚Œä»¥å¤–ã¯ãƒ•ãƒ¬ãƒ¼ãƒ å†…ã®åˆè¨ˆã‚’è¶³ã—ã‚ã’ã‚‹
+      else
+      {
+        score += this.sumOfBallsInFrame( frameIndex );
+        
+        frameIndex += 2;
+      }
+    }
+    
+    return score;
+  }
+  
+  // ãƒ•ãƒ¬ãƒ¼ãƒ å†…ã®ãƒ”ãƒ³æ•°ã®åˆè¨ˆ
+  private int sumOfBallsInFrame( int frameIndex )
+  {
+    return this.rolls[ frameIndex ] + this.rolls[ frameIndex + 1 ];
+  }
 
-	// ƒXƒyƒA‚Ìê‡‚Ìƒ{[ƒiƒX”
-	private int spareBonus( int frameIndex )
-	{
-		return this.rolls[ frameIndex + 2 ];
-	}
+  // ã‚¹ãƒšã‚¢ã®å ´åˆã®ãƒœãƒ¼ãƒŠã‚¹æ•°
+  private int spareBonus( int frameIndex )
+  {
+    return this.rolls[ frameIndex + 2 ];
+  }
 
-	// ƒXƒgƒ‰ƒCƒN‚Ìê‡‚Ìƒ{[ƒiƒX”
-	private int strikeBonus( int frameIndex )
-	{
-		return this.rolls[ frameIndex + 1 ] + this.rolls[ frameIndex + 2 ];
-	}
-	
-	// ƒXƒyƒA‚©‚Ç‚¤‚©”»’f
-	private boolean isSpare( int frameIndex )
-	{
-		return this.rolls[ frameIndex ] + this.rolls[ frameIndex + 1 ] == 10;
-	}
-	
-	// ƒXƒgƒ‰ƒCƒN‚©‚Ç‚¤‚©”»’f
-	private boolean isStrike( int frameIndex )
-	{
-		return this.rolls[ frameIndex ] == 10;
-	}
+  // ã‚¹ãƒˆãƒ©ã‚¤ã‚¯ã®å ´åˆã®ãƒœãƒ¼ãƒŠã‚¹æ•°
+  private int strikeBonus( int frameIndex )
+  {
+    return this.rolls[ frameIndex + 1 ] + this.rolls[ frameIndex + 2 ];
+  }
+  
+  // ã‚¹ãƒšã‚¢ã‹ã©ã†ã‹åˆ¤æ–­
+  private boolean isSpare( int frameIndex )
+  {
+    return this.rolls[ frameIndex ] + this.rolls[ frameIndex + 1 ] == 10;
+  }
+  
+  // ã‚¹ãƒˆãƒ©ã‚¤ã‚¯ã‹ã©ã†ã‹åˆ¤æ–­
+  private boolean isStrike( int frameIndex )
+  {
+    return this.rolls[ frameIndex ] == 10;
+  }
 
 }

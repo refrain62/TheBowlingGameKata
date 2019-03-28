@@ -4,97 +4,97 @@ import junit.framework.TestCase;
 
 public class BowlingGameKataTest extends TestCase
 {
-	// ƒQ[ƒ€ŠÇ—
-	private Game game;
-	
-	// ƒQ[ƒ€‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì¶¬
-	protected void setUp() throws Exception
-	{
-		this.game = new Game();
-	}
+  // ã‚²ãƒ¼ãƒ ç®¡ç†
+  private Game game;
+  
+  // ã‚²ãƒ¼ãƒ ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ç”Ÿæˆ
+  protected void setUp() throws Exception
+  {
+    this.game = new Game();
+  }
 
-	// w’è‚³‚ê‚½ƒsƒ“”‚Åw’èƒ[ƒ‹”‚ÌƒXƒRƒA‚ğİ’è
-	private void rollMany( int rollCnt, int pins )
-	{
-		for( int i = 0; i < rollCnt; i++ )
-		{
-			this.game.roll( pins );
-		}
-	}
-	
-	// ƒK[ƒ^[ƒQ[ƒ€‚ÌƒeƒXƒg
-	public void testGutterGame() throws Exception
-	{
-		// ‘S‚Ä‚ÌƒQ[ƒ€‚Ìƒ[ƒ‹‚ÅƒXƒRƒA0‚ğİ’è
-		this.rollMany( 20, 0 );
-		
-		// ƒXƒRƒA‚ª0‚Å‚ ‚é‚±‚Æ‚ğŠm”F
-		assertEquals( 0, this.game.score() );
-	}
-	
-	// ‚·‚×‚Ä‚ÌƒQ[ƒ€ƒ[ƒ‹‚Å‚P‚¾‚Á‚½ê‡‚ÌƒeƒXƒg
-	public void testAllOnes() throws Exception
-	{
-		// ‘S‚Ä‚ÌƒQ[ƒ€‚Ìƒ[ƒ‹‚ÅƒXƒRƒA1‚ğİ’è
-		this.rollMany( 20, 1 );
-		
-		// ƒXƒRƒA‚ª 20‚É‚È‚é‚±‚Æ‚ğŠm”F
-		assertEquals( 20, this.game.score() );
-	}
-	
-	// 1‰ñƒXƒyƒA‚É‚È‚Á‚½ê‡‚ÌƒeƒXƒg
-	// ¦ƒXƒyƒA‚ÍuŸ‚Ì‚P“Š•ª‚ğ‰ÁZ‚·‚é‚±‚Æ‚ª‚Å‚«‚év
-	public void testOneSpare() throws Exception
-	{
-		// ƒXƒyƒA‚ğæ‚Á‚½ê‡
-		this.rollSparea();
-		
-		this.game.roll( 3 );
+  // æŒ‡å®šã•ã‚ŒãŸãƒ”ãƒ³æ•°ã§æŒ‡å®šãƒ­ãƒ¼ãƒ«æ•°ã®ã‚¹ã‚³ã‚¢ã‚’è¨­å®š
+  private void rollMany( int rollCnt, int pins )
+  {
+    for( int i = 0; i < rollCnt; i++ )
+    {
+      this.game.roll( pins );
+    }
+  }
+  
+  // ã‚¬ãƒ¼ã‚¿ãƒ¼ã‚²ãƒ¼ãƒ ã®ãƒ†ã‚¹ãƒˆ
+  public void testGutterGame() throws Exception
+  {
+    // å…¨ã¦ã®ã‚²ãƒ¼ãƒ ã®ãƒ­ãƒ¼ãƒ«ã§ã‚¹ã‚³ã‚¢0ã‚’è¨­å®š
+    this.rollMany( 20, 0 );
+    
+    // ã‚¹ã‚³ã‚¢ãŒ0ã§ã‚ã‚‹ã“ã¨ã‚’ç¢ºèª
+    assertEquals( 0, this.game.score() );
+  }
+  
+  // ã™ã¹ã¦ã®ã‚²ãƒ¼ãƒ ãƒ­ãƒ¼ãƒ«ã§ï¼‘ã ã£ãŸå ´åˆã®ãƒ†ã‚¹ãƒˆ
+  public void testAllOnes() throws Exception
+  {
+    // å…¨ã¦ã®ã‚²ãƒ¼ãƒ ã®ãƒ­ãƒ¼ãƒ«ã§ã‚¹ã‚³ã‚¢1ã‚’è¨­å®š
+    this.rollMany( 20, 1 );
+    
+    // ã‚¹ã‚³ã‚¢ãŒ 20ã«ãªã‚‹ã“ã¨ã‚’ç¢ºèª
+    assertEquals( 20, this.game.score() );
+  }
+  
+  // 1å›ã‚¹ãƒšã‚¢ã«ãªã£ãŸå ´åˆã®ãƒ†ã‚¹ãƒˆ
+  // â€»ã‚¹ãƒšã‚¢ã¯ã€Œæ¬¡ã®ï¼‘æŠ•åˆ†ã‚’åŠ ç®—ã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã€
+  public void testOneSpare() throws Exception
+  {
+    // ã‚¹ãƒšã‚¢ã‚’å–ã£ãŸå ´åˆ
+    this.rollSparea();
+    
+    this.game.roll( 3 );
 
-		// c‚è‚Ìƒ[ƒ‹i‘S20‰ñ - ã‹L3‰ñ = 17‰ñj‚Í‚·‚×‚ÄƒXƒRƒA‚ª0‚¾‚Á‚½‚Æ‘z’è
-		this.rollMany( 17, 0 );
+    // æ®‹ã‚Šã®ãƒ­ãƒ¼ãƒ«ï¼ˆå…¨20å› - ä¸Šè¨˜3å› = 17å›ï¼‰ã¯ã™ã¹ã¦ã‚¹ã‚³ã‚¢ãŒ0ã ã£ãŸã¨æƒ³å®š
+    this.rollMany( 17, 0 );
 
-		// ƒXƒRƒA‚ª 16(5 + 5 + 3 + 3)‚É‚È‚é‚±‚Æ‚ğŠm”F
-		assertEquals( 16, this.game.score() );
-	}
+    // ã‚¹ã‚³ã‚¢ãŒ 16(5 + 5 + 3 + 3)ã«ãªã‚‹ã“ã¨ã‚’ç¢ºèª
+    assertEquals( 16, this.game.score() );
+  }
 
-	// 1‰ñƒXƒgƒ‰ƒCƒN‚É‚È‚Á‚½ê‡‚ÌƒeƒXƒg
-	// ¦ƒXƒgƒ‰ƒCƒN‚Í‚P“Š–Ú‚Å10–{‘S•”“|‚µ‚½ê‡BƒXƒgƒ‰ƒCƒN‚ğ‘«‚µ‚½ƒtƒŒ[ƒ€‚Ì“¾“_‚ÍAŸ‚Ì‚Q“Š•ª‚ğ‰ÁZ‚·‚é[10{›{›]
-	public void testOneStrike() throws Exception
-	{
-		// ƒXƒgƒ‰ƒCƒN‚ğæ‚Á‚½ê‡
-		this.rollStrike();
-		
-		this.game.roll( 3 );
-		this.game.roll( 4 );
+  // 1å›ã‚¹ãƒˆãƒ©ã‚¤ã‚¯ã«ãªã£ãŸå ´åˆã®ãƒ†ã‚¹ãƒˆ
+  // â€»ã‚¹ãƒˆãƒ©ã‚¤ã‚¯ã¯ï¼‘æŠ•ç›®ã§10æœ¬å…¨éƒ¨å€’ã—ãŸå ´åˆã€‚ã‚¹ãƒˆãƒ©ã‚¤ã‚¯ã‚’è¶³ã—ãŸãƒ•ãƒ¬ãƒ¼ãƒ ã®å¾—ç‚¹ã¯ã€æ¬¡ã®ï¼’æŠ•åˆ†ã‚’åŠ ç®—ã™ã‚‹[10ï¼‹â—‹ï¼‹â—‹]
+  public void testOneStrike() throws Exception
+  {
+    // ã‚¹ãƒˆãƒ©ã‚¤ã‚¯ã‚’å–ã£ãŸå ´åˆ
+    this.rollStrike();
+    
+    this.game.roll( 3 );
+    this.game.roll( 4 );
 
-		// c‚è‚Ìƒ[ƒ‹i‘S20‰ñ - ã‹L4‰ñiƒXƒgƒ‰ƒCƒN‚Í2ƒ[ƒ‹•ªj = 16‰ñj‚Í‚·‚×‚ÄƒXƒRƒA‚ª0‚¾‚Á‚½‚Æ‘z’è
-		this.rollMany( 16, 0 );
+    // æ®‹ã‚Šã®ãƒ­ãƒ¼ãƒ«ï¼ˆå…¨20å› - ä¸Šè¨˜4å›ï¼ˆã‚¹ãƒˆãƒ©ã‚¤ã‚¯ã¯2ãƒ­ãƒ¼ãƒ«åˆ†ï¼‰ = 16å›ï¼‰ã¯ã™ã¹ã¦ã‚¹ã‚³ã‚¢ãŒ0ã ã£ãŸã¨æƒ³å®š
+    this.rollMany( 16, 0 );
 
-		// ƒXƒRƒA‚ª 24(10 + (3 + 4) + (3 + 4))‚É‚È‚é‚±‚Æ‚ğŠm”F
-		assertEquals( 24, this.game.score() );
-	}
-	
-	// ƒp[ƒtƒFƒNƒgƒQ[ƒ€‚Ìê‡‚ÌƒeƒXƒg
-	public void testPerfectGmae() throws Exception
-	{
-		// ‘S‚Ä‚ÌƒQ[ƒ€‚ÅƒXƒgƒ‰ƒCƒNi10ƒtƒŒ[ƒ€{10ƒtƒŒ[ƒ€‚Q“Š–Ú{10ƒtƒŒ[ƒ€3“Š–Ú12‰ñj
-		this.rollMany( 12, 10 );
+    // ã‚¹ã‚³ã‚¢ãŒ 24(10 + (3 + 4) + (3 + 4))ã«ãªã‚‹ã“ã¨ã‚’ç¢ºèª
+    assertEquals( 24, this.game.score() );
+  }
+  
+  // ãƒ‘ãƒ¼ãƒ•ã‚§ã‚¯ãƒˆã‚²ãƒ¼ãƒ ã®å ´åˆã®ãƒ†ã‚¹ãƒˆ
+  public void testPerfectGmae() throws Exception
+  {
+    // å…¨ã¦ã®ã‚²ãƒ¼ãƒ ã§ã‚¹ãƒˆãƒ©ã‚¤ã‚¯ï¼ˆ10ãƒ•ãƒ¬ãƒ¼ãƒ ï¼‹10ãƒ•ãƒ¬ãƒ¼ãƒ ï¼’æŠ•ç›®ï¼‹10ãƒ•ãƒ¬ãƒ¼ãƒ 3æŠ•ç›®ï¼12å›ï¼‰
+    this.rollMany( 12, 10 );
 
-		// ƒXƒRƒA‚ª 300‚É‚È‚é‚±‚Æ‚ğŠm”F
-		assertEquals( 300, this.game.score() );
-	}
-	
-	// ƒXƒgƒ‰ƒCƒN‚ğæ‚Á‚½ê‡
-	private void rollStrike()
-	{
-		this.game.roll( 10 );
-	}
-	
-	// ƒXƒyƒA‚ğæ‚Á‚½ê‡
-	private void rollSparea()
-	{
-		game.roll( 5 );
-		game.roll( 5 );
-	}
+    // ã‚¹ã‚³ã‚¢ãŒ 300ã«ãªã‚‹ã“ã¨ã‚’ç¢ºèª
+    assertEquals( 300, this.game.score() );
+  }
+  
+  // ã‚¹ãƒˆãƒ©ã‚¤ã‚¯ã‚’å–ã£ãŸå ´åˆ
+  private void rollStrike()
+  {
+    this.game.roll( 10 );
+  }
+  
+  // ã‚¹ãƒšã‚¢ã‚’å–ã£ãŸå ´åˆ
+  private void rollSparea()
+  {
+    game.roll( 5 );
+    game.roll( 5 );
+  }
 }
